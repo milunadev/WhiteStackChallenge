@@ -67,19 +67,23 @@ jobs:
       - name: Check if Helm release exists
         id: check_release
         run: |
+          helm list -n challenger-006
           if helm list -n challenger-006 | grep -q my-tetris-mluna; then
-            echo "::set-output name=exists::true"
-          else
-            echo "::set-output name=exists::false"
-          fi
-
-      - name: Install or Upgrade Helm release
-        run: |
-          if [[ "${{ steps.check_release.outputs.exists }}" == "true" ]]; then
             echo "Upgrading existing release..."
-            helm upgrade --install my-tetris-mluna ./tetris-mluna-chart --namespace challenger-006
+            helm upgrade --install my-tetris-mluna ./tetris-mluna-chart
+            echo "Upgraded existing release..."
           else
             echo "Installing new release..."
-            helm install my-tetris-mluna ./tetris-mluna-chart --namespace challenger-006
+            helm install my-tetris-mluna ./tetris-mluna-chart
           fi
+
+      #  name: Install or Upgrade Helm release
+      #   run: |
+      #     if [[ "${{ steps.check_release.outputs.exists }}" == "true" ]]; then
+      #       echo "Upgrading existing release..."
+      #       helm upgrade --install my-tetris-mluna ./tetris-mluna-chart 
+      #     else
+      #       echo "Installing new release..."
+      #       helm install my-tetris-mluna ./tetris-mluna-chart --namespace challenger-006
+      #     fi-
         
