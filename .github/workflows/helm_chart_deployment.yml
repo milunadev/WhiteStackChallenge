@@ -43,11 +43,11 @@ jobs:
           push: true
           tags: milunadev/tetrischallenge:latest
 
-      # - name: Build and push Docker image
-      #   run: |
-      #     cd tengen-tetris
-      #     docker build --build-arg PORT=${{ env.PORT }} -t milunadev/tetrischallenge:${{ github.sha }} .
-      #     docker push myapp:${{ github.sha }}
+      - name: Update values.yaml with new port. HELM CHART
+        run: |
+          cd bash_scripts && chmod 777 write_values_helm.sh
+          ./write_values_helm.sh ${{ env.PORT }}
+
 
       # - name: Update Helm chart
       #   run: |
