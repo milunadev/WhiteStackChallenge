@@ -58,18 +58,10 @@ jobs:
           kubeconfig: ${{ secrets.KUBECONFIG }}
       
       - name: Test Kubernetes cluster access
-        run: kubectl get nodes
-
-
-      # - name: Update Helm chart
-      #   run: |
-      #     export $(cat .env | xargs)
-      #     yq e -i ".service.port = strenv(PORT)" helm/myapp/values.yaml
-
-      # - name: Deploy to Kubernetes
-      #   run: |
-      #     helm upgrade --install myapp helm/myapp \
-      #       --set image.tag=${{ github.sha }} \
-      #       --set service.port=$PORT
-      #   env:
-      #     KUBECONFIG: ${{ secrets.KUBECONFIG }}
+        run: kubectl get all
+      
+      - name: Deploy or Update Helm chart
+        run: |
+          helm upgrade --install my-tetris ./tetris-mluna-chart \
+            --namespace challenger-006 \
+            --wait
