@@ -1,0 +1,40 @@
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 232-785-693
+ * Detected change in 'C:\\DEV\\Contenedores\\KubernetesChallenge\\tengen-tetris\\master.py', reloading
+Database already initialized
+--> Received disconnect from YJ1Ev7nmX7o6H6svAAAB
+Disconnect: this socket id does not belong to any room
+--> Received requestDuoGame from bGpQm-xNa1Zp4ZmZAAAD
+Client bGpQm-xNa1Zp4ZmZAAAD accepted in room room1
+Room not full, sending wait message
+--> Received disconnect from bGpQm-xNa1Zp4ZmZAAAD
+Disconnected both players in room room1. Room is currently empty
+--> Received requestDuoGame from zBY5ofrNGypzKiIgAAAH
+Client zBY5ofrNGypzKiIgAAAH accepted in room room1
+Room not full, sending wait message
+--> Received requestDuoGame from zssBoNdPKoUnySNKAAAF
+Client zssBoNdPKoUnySNKAAAF accepted in room room1
+Room full, sending begin message
+Current pieces in room room1:
+['T', 'Z', 'Z', 'Z', 'I', 'L', 'L', 'O', 'J', 'I']
+--> Received updateSelector from zBY5ofrNGypzKiIgAAAH
+--> Received updateSelector from zBY5ofrNGypzKiIgAAAH
+--> Received updateSelector from zBY5ofrNGypzKiIgAAAH
+--> Received updateState from zBY5ofrNGypzKiIgAAAH
+--> Received disconnect from zssBoNdPKoUnySNKAAAF
+Disconnected both players in room room1. Room is currently empty
+--> Received disconnect from zBY5ofrNGypzKiIgAAAH
+Disconnect: this socket id does not belong to any room
+--> Received disconnect from u-AUVR7XRNNVwmRuAAAL
+Disconnect: this socket id does not belong to any room
+--> Received disconnect from dGJguNZFtdx631u4AAAJ
+Disconnect: this socket id does not belong to any room
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 232-785-693
+ * Detected change in 'C:\\DEV\\Contenedores\\KubernetesChallenge\\tengen-tetris\\master.py', reloading
+Database already initialized
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 232-785-693
