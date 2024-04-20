@@ -62,6 +62,4 @@ jobs:
       
       - name: Deploy or Update Helm chart
         run: |
-          helm upgrade --install my-tetris ./tetris-mluna-chart \
-            --namespace challenger-006 \
-            --wait
+          helm upgrade --install --force my-tetris ./tetris-mluna-chart
