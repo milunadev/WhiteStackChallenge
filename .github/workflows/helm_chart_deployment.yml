@@ -1,0 +1,40 @@
+name: k8s pipeline deployment
+on:
+  push:
+    # paths:
+    #   - '.env'
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      KUBECONFI: ${{ secrets.KUBECONFIG }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Get PORT value && write Dockerfile
+        run: |
+          PORT=$(cat .env | grep PORT | cut -d '=' -f2)
+          echo "PORT=$PORT" >> $GITHUB_ENV
+          cd bash_scripts && chmod 777 write_dockerfile.sh
+          ./write_dockerfile.sh ${{ env.PORT }}
+
+      # - name: Build and push Docker image
+      #   run: |
+      #     export $(cat .env | xargs)
+      #     docker build --build-arg PORT=$PORT -t myapp:${{ github.sha }} .
+      #     docker push myapp:${{ github.sha }}
+
+      # - name: Update Helm chart
+      #   run: |
+      #     export $(cat .env | xargs)
+      #     yq e -i ".service.port = strenv(PORT)" helm/myapp/values.yaml
+
+      # - name: Deploy to Kubernetes
+      #   run: |
+      #     helm upgrade --install myapp helm/myapp \
+      #       --set image.tag=${{ github.sha }} \
+      #       --set service.port=$PORT
+      #   env:
+      #     KUBECONFIG: ${{ secrets.KUBECONFIG }}
