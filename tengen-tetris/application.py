@@ -17,7 +17,7 @@ master = Master()
 @app.route('/', methods=['GET'])
 def index():
     # Obtener el puerto de las variables de entorno
-    port = os.getenv('PORT', 5000)
+    port = os.getenv('PORT')
     # Pasar el puerto a la plantilla
     return render_template('index.html', port=port)
 
@@ -113,5 +113,6 @@ def submit(data):
 if __name__ == '__main__':
     app.debug = True
     host = os.getenv('HOST', '0.0.0.0')   
-    port = int(os.getenv('PORT', 5000))   
+    port = int(os.getenv('PORT'))   
+    print(f"Starting server on {host}:{port}")
     socketio.run(app, host=host, port=port)
