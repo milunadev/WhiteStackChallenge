@@ -13,15 +13,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       
-      - name: Get PORT value 
+      - name: Get PORT value and write Dockerfile
         run: |
           PORT=$(cat .env | grep PORT | cut -d '=' -f2)
           echo "PORT=$PORT" >> $GITHUB_ENV
 
-      - name: Write Dockerfile
-        run: bash bash_scripts/write_dockerfile.sh ${{ env.PORT }}
+      - name: Run write_dockerfile.sh script
+        run: |
+          cd bash_scripts && chmod 777 write_dockerfile.sh
+          ./write_dockerfile.sh ${{ env.PORT }}
         env:
           PORT: ${{ env.PORT }}
+
+      # - name: Get PORT value && write Dockerfile
+      #   run: |
+      #     PORT=$(cat .env | grep PORT | cut -d '=' -f2)
+      #     echo "PORT=$PORT" >> $GITHUB_ENV
+      #     cd bash_scripts && chmod 777 write_dockerfile.sh
+      #     ./write_dockerfile.sh ${{ env.PORT }}
 
       # - name: Build and push Docker image
       #   run: |
