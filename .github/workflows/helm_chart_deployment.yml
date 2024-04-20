@@ -43,11 +43,11 @@ jobs:
           push: true
           tags: milunadev/tetrischallenge:latest
 
-      - name: Build and push Docker image
-        run: |
-          cd tengen-tetris
-          docker build --build-arg PORT=${{ env.PORT }} -t milunadev/tetrischallenge:${{ github.sha }} .
-          docker push myapp:${{ github.sha }}
+      # - name: Build and push Docker image
+      #   run: |
+      #     cd tengen-tetris
+      #     docker build --build-arg PORT=${{ env.PORT }} -t milunadev/tetrischallenge:${{ github.sha }} .
+      #     docker push myapp:${{ github.sha }}
 
       # - name: Update Helm chart
       #   run: |
