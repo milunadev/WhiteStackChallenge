@@ -42,6 +42,7 @@ jobs:
           file: tengen-tetris/Dockerfile
           push: true
           tags: milunadev/tetrischallenge:latest
+          build-args: PORT=${{ env.PORT }}
       
       - name: Update values.yaml with new port. HELM CHART
         run: |
