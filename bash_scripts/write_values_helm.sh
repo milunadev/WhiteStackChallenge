@@ -7,7 +7,7 @@ service:
 
 app:
   name: tetris
-  image: milunadev/tetrischallenge:v0
+  image: milunadev/tetrischallenge:latest
   replicas: 2
   containerPort: ${PORT}
 
