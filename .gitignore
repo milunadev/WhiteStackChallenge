@@ -4,3 +4,5 @@ challenger-006.yaml
 __pycache__/
 database.db
 /tetris-local-env/**
+/Lib/**
+**/site-packages/**
