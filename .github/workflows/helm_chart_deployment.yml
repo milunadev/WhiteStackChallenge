@@ -36,6 +36,14 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: tengen-tetris
+          file: tengen-tetris/Dockerfile
+          push: true
+          tags: milunadev/tetrischallenge:latest
+
+      - name: Build and push Docker image
         run: |
           cd tengen-tetris
           docker build --build-arg PORT=${{ env.PORT }} -t milunadev/tetrischallenge:${{ github.sha }} .
