@@ -14,15 +14,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       
-      - name: Get PORT value and write Dockerfile
+      - name: Get PORT value and write Dockerfile && set .env in tetris folder
         run: |
           PORT=$(cat .env | grep PORT | cut -d '=' -f2)
           echo "PORT=$PORT" >> $GITHUB_ENV
+          cp .env tengen-tetris/.env
 
-      - name: Run write_dockerfile.sh script
+      - name: Run write_dockerfile.sh script 
         run: |
           cd bash_scripts && chmod 777 write_dockerfile.sh
           ./write_dockerfile.sh ${{ env.PORT }}
+          
+
         env:
           PORT: ${{ env.PORT }}
       

@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 
 #Cargar variables de ambiente para el puerto e IP desde ../.env
-dotenv_path = os.path.join(os.path.dirname(__file__), '..', '.env')
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 # Initialize the flask app.
