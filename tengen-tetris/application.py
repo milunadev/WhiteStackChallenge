@@ -113,6 +113,6 @@ def submit(data):
 if __name__ == '__main__':
     app.debug = True
     host = os.getenv('HOST', '0.0.0.0')   
-    port = os.getenv('PORT')
+    port = int(os.getenv('PORT'))
     print(f"Starting server on {host}:{port}")
     socketio.run(app, host=host, port=port)
