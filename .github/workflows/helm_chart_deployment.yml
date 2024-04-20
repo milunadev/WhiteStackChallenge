@@ -42,11 +42,23 @@ jobs:
           file: tengen-tetris/Dockerfile
           push: true
           tags: milunadev/tetrischallenge:latest
-
+      
       - name: Update values.yaml with new port. HELM CHART
         run: |
           cd bash_scripts && chmod 777 write_values_helm.sh
           ./write_values_helm.sh ${{ env.PORT }}
+
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+      
+      - name: Configure Kubeconfig
+        uses: azure/k8s-set-context@v1
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+      
+      - name: Test Kubernetes cluster access
+        run: kubectl get nodes
 
 
       # - name: Update Helm chart
