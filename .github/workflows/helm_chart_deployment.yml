@@ -62,4 +62,24 @@ jobs:
       
       - name: Deploy or Update Helm chart
         run: |
-          helm upgrade --install --force my-tetris ./tetris-mluna-chart
+          # Intenta el despliegue o actualización con Helm
+          set +e  # Desactiva la detección de errores para manejar los errores manualmente
+          helm upgrade --install --atomic my-tetris ./tetris-mluna-chart \
+            --set image.tag=latest \
+            --namespace challenger-006
+          HELM_UPGRADE_EXIT_CODE=$?
+          set -e  # Reactiva la detección de errores
+
+          # Si el comando de Helm falla con un error que no sea de 'release no encontrada'
+          if [ $HELM_UPGRADE_EXIT_CODE -ne 0 ] && [ $HELM_UPGRADE_EXIT_CODE -ne 1 ]; then
+            echo "Error in Helm upgrade --install command. Exit code: $HELM_UPGRADE_EXIT_CODE"
+            exit $HELM_UPGRADE_EXIT_CODE
+          fi
+
+          # Si Helm falla porque no hay un release previo, trata de instalar de nuevo
+          if [ $HELM_UPGRADE_EXIT_CODE -eq 1 ]; then
+            echo "Helm release not found. Attempting to install..."
+            helm install my-tetris ./tetris-mluna-chart \
+              --set image.tag=latest \
+              --namespace challenger-006
+          fi
