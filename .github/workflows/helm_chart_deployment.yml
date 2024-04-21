@@ -53,10 +53,10 @@ jobs:
           ./write_values_helm.sh ${{ env.PORT }}
 
       - name: Install Helm
-        uses: azure/setup-helm@v1
+        uses: azure/setup-helm@v4.2.0
       
       - name: Configure Kubeconfig
-        uses: azure/k8s-set-context@v1
+        uses: azure/k8s-set-context@v4
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBECONFIG }}
@@ -65,7 +65,6 @@ jobs:
         run: kubectl get all
       
       - name: Check if Helm release exists
-        id: check_release
         run: |
           helm list -n challenger-006
           if helm list -n challenger-006 | grep -q my-tetris-mluna; then
