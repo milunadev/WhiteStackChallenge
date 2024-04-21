@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tetris-deployment
+  namespace: challenger-006
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tetris
+  template:
+    metadata:
+      labels:
+        app: tetris
+    spec:
+      containers:
+      - name: tetris-container
+        image: milunadev/tetrischallenge:v0
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tetris-service
+  namespace: challenger-006
+spec:
+  type: ClusterIP
+  selector:
+    app: tetris
+  ports:
+    - port: 5000
+      targetPort: 5000
