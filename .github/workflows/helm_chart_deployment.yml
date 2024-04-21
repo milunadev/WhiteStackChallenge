@@ -24,8 +24,6 @@ jobs:
         run: |
           cd bash_scripts && chmod 777 write_dockerfile.sh
           ./write_dockerfile.sh ${{ env.PORT }}
-          
-
         env:
           PORT: ${{ env.PORT }}
       
@@ -61,10 +59,7 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBECONFIG }}
       
-      - name: Test Kubernetes cluster access
-        run: kubectl get all
-      
-      - name: Check if Helm release exists
+      - name: Create or update the Helm release
         run: |
           helm list -n challenger-006
           if helm list -n challenger-006 | grep -q my-tetrismluna; then
@@ -76,13 +71,3 @@ jobs:
             helm install my-tetrismluna ./tetris-mluna-chart
           fi
 
-      #  name: Install or Upgrade Helm release
-      #   run: |
-      #     if [[ "${{ steps.check_release.outputs.exists }}" == "true" ]]; then
-      #       echo "Upgrading existing release..."
-      #       helm upgrade --install my-tetris-mluna ./tetris-mluna-chart 
-      #     else
-      #       echo "Installing new release..."
-      #       helm install my-tetris-mluna ./tetris-mluna-chart --namespace challenger-006
-      #     fi-
-        
