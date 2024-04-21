@@ -135,5 +135,4 @@ Aqui algunos pasos del pipeline:
 ### DISPARO DEL PIPELINE:
 Haremos un cambio en el archivo .env, cambiare el puerto a 9000 y esto hara un trigger del pipeline, en este corto video expico el funcionamiento 😃😃😃:
 
-<vp url="https://youtu.be/oGvC_9nYjyM"></vp>
-
+[![Mira mi video!](https://img.youtube.com/vi/oGvC_9nYjyM/0.jpg)](https://youtu.be/oGvC_9nYjyM)
