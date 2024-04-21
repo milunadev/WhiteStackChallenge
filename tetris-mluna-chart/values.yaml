@@ -1,20 +1,20 @@
-# Default values for tetris-mluna-chart.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+# # Default values for tetris-mluna-chart.
+# # This is a YAML-formatted file.
+# # Declare variables to be passed into your templates.
 
-service:
-  type: ClusterIP
-  port: 5000
+# service:
+#   type: ClusterIP
+#   port: 5000
 
-app:
-  name: tetris
-  image: milunadev/tetrischallenge:latest
-  replicas: 2
-  containerPort: 5000
+# app:
+#   name: tetris
+#   image: milunadev/tetrischallenge:latest
+#   replicas: 2
+#   containerPort: 5000
 
-  ingress:
-    enabled: true
-    host: "tetris-challenger006.whitecruiser.201.217.240.66.nip.io"
-    path: "/"
-    pathType: Prefix
-    servicePort: 5000
+#   ingress:
+#     enabled: true
+#     host: "tetris-challenger006.whitecruiser.201.217.240.66.nip.io"
+#     path: "/"
+#     pathType: Prefix
+#     servicePort: 5000
