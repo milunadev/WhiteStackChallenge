@@ -1,8 +1,8 @@
 name: k8s pipeline deployment
 on:
   push:
-    # paths:
-    #   - '.env'
+    paths:
+      - '.env'
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
