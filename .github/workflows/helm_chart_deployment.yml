@@ -67,13 +67,13 @@ jobs:
       - name: Check if Helm release exists
         run: |
           helm list -n challenger-006
-          if helm list -n challenger-006 | grep -q my-tetris-mluna; then
+          if helm list -n challenger-006 | grep -q my-tetrismluna; then
             echo "Upgrading existing release..."
-            helm upgrade --install my-tetris-mluna ./tetris-mluna-chart
+            helm upgrade --install my-tetrismluna ./tetris-mluna-chart
             echo "Upgraded existing release..."
           else
             echo "Installing new release..."
-            helm install my-tetris-mluna ./tetris-mluna-chart
+            helm install my-tetrismluna ./tetris-mluna-chart
           fi
 
       #  name: Install or Upgrade Helm release
